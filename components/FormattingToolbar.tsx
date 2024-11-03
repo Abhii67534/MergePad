@@ -16,9 +16,9 @@ const FormattingToolbar = () => {
   const LowPriority = 1;
   const [editor] = useLexicalComposerContext();
   const [isBold, setIsBold] = useState(false);
-  const [isItalic, setIsItalic] = useState(false);
   const [canUndo, setCanUndo] = useState(false);
   const [canRedo, setCanRedo] = useState(false);
+  const [isItalic, setIsItalic] = useState(false);
 
   const $updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -46,62 +46,87 @@ const FormattingToolbar = () => {
     );
   }, [editor, $updateToolbar]);
 
-  const handleFormatText = (format) => {
-    editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
+  const handleBold = () => {
+    editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
+  };
+  const handleItalic = () => {
+    editor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic");
   };
 
-  const handleHeading = (level) => {
+  const handleH1 = () => {
     editor.update(() => {
       const selection = $getSelection();
       if ($isRangeSelection(selection)) {
-        $setBlocksType(selection, () => $createHeadingNode(`h${level}`));
+        $setBlocksType(selection, () => $createHeadingNode("h1"));
+      }
+    });
+  };
+
+  const handleH2 = () => {
+    editor.update(() => {
+      const selection = $getSelection();
+      if ($isRangeSelection(selection)) {
+        $setBlocksType(selection, () => $createHeadingNode("h2"));
+      }
+    });
+  };
+
+  const handleH3 = () => {
+    editor.update(() => {
+      const selection = $getSelection();
+      if ($isRangeSelection(selection)) {
+        $setBlocksType(selection, () => $createHeadingNode("h3"));
       }
     });
   };
 
   return (
     <div className="bg-dark-theme-nav flex items-center pl-2 space-x-2">
-      <button
-        className="flex items-center"
-        onClick={() => handleFormatText("undo")}
-        aria-label="Undo"
-      >
-        <img className="h-[18px] mr-2" src="/undo.png" alt="Undo" />
+      <button className=" flex items-center" onClick={handleH3}>
+        <img className="h-[18px] mb-[5px] mr-2" src="/undo.png" alt="undo" />
       </button>
-      <button
-        className="flex items-center"
-        onClick={() => handleFormatText("redo")}
-        aria-label="Redo"
-      >
-        <img className="h-[18px] mr-2" src="/redo.png" alt="Redo" />
+      <button className=" flex items-center" onClick={handleH3}>
+        <img className="h-[18px] mb-[5px] mr-2" src="/redo.png" alt="undo" />
       </button>
 
       <button
-        className={`editor-tools-font flex items-center mr-2 ${isBold ? "bg-slate-700 rounded-sm" : ""}`}
-        onClick={() => handleFormatText("bold")}
-        aria-label="Bold"
+        className={`editor-tools-font flex items-center mr-2${
+          isBold ? "bg-slate-700 rounded-sm" : ""
+        }`}
+        onClick={handleBold}
       >
         B
       </button>
 
       <button
-        className={`editor-tools-font flex items-center mr-2 ${isItalic ? "bg-slate-700 rounded-sm" : ""}`}
-        onClick={() => handleFormatText("italic")}
-        aria-label="Italic"
+        className={`editor-tools-font flex items-center mr-2 ${
+          isItalic ? "bg-slate-700 rounded-sm" : ""
+        }`}
+        onClick={handleItalic}
       >
         I
       </button>
 
-      {['H1', 'H2', 'H3'].map((heading, index) => (
-        <button
-          key={heading}
-          className="editor-tools-font flex items-center mr-2"
-          onClick={() => handleHeading(index + 1)}
-          aria-label={`Heading ${index + 1}`}
-        >
-          {heading}
-        </button>
-      ))}
+      <button
+        className="editor-tools-font flex items-center mr-2"
+        onClick={handleH1}
+      >
+        H1
+      </button>
+
+      <button
+        className="editor-tools-font flex items-center mr-2"
+        onClick={handleH2}
+      >
+        H2
+      </button>
+
+      <button
+        className="editor-tools-font flex items-center mr-2"
+        onClick={handleH3}
+      >
+        H3
+      </button>
     </div>
   );
 };

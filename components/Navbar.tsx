@@ -1,3 +1,4 @@
+import { UserButton } from '@clerk/nextjs';
 import React from 'react';
 
 const Navbar = () => {
@@ -8,9 +9,9 @@ const Navbar = () => {
                     <img src="/logo.png" alt="MergePad Logo" className="h-10 mr-2" />
                     <span className="text-xl font-bold ml-3">MergePad</span>
                 </div>
-                {/* Placeholder for future links or buttons */}
-                <div className="hidden md:flex space-x-4"> {/* Example for links, hidden on small screens */}
+                <div className="hidden md:flex space-x-4"> 
                     
+                <UserButton showName />
                 </div>
             </nav>
         </header>
