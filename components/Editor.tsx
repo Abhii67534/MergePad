@@ -50,7 +50,7 @@ export function Editor({}:Props):JSX.Element {
         <FormattingToolbar/>
       <RichTextPlugin
         contentEditable={<ContentEditable className=" h-screen p-3 text-white" />}
-        placeholder={<div className='text-white absolute top-[90px] left-5'>Enter some text...</div>}
+        placeholder={<div className='text-white absolute top-[125px] left-5'>Enter some text...</div>}
         ErrorBoundary={LexicalErrorBoundary}
       />
       <HistoryPlugin />
