@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.editor-tools-font{
+  color:white;
+  padding: 5px 5px 5px 5px;
+  margin:  5px 5px 5px 5px;
+}
