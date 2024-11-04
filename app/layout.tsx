@@ -7,6 +7,9 @@ import { SignedIn } from "@clerk/nextjs";
 import { dark } from '@clerk/themes'
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import "@liveblocks/react-ui/styles.css";
+import "@liveblocks/react-lexical/styles.css";
+import "./globals.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -44,7 +47,7 @@ export default function RootLayout({
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-dark-theme`}>
           <SignedOut>
             <div className="flex items-center justify-center min-h-screen">
-              <SignIn routing="hash" redirectTo="/dashboard" />
+              <SignIn routing="hash" />
             </div>
           </SignedOut>
           <SignedIn>
