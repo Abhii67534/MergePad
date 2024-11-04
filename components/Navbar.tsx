@@ -1,5 +1,6 @@
 import { UserButton } from '@clerk/nextjs';
 import React from 'react';
+import Collaborators from './Collaborators';
 
 const Navbar = () => {
     return (
@@ -10,8 +11,8 @@ const Navbar = () => {
                     <span className="text-xl font-bold ml-3">MergePad</span>
                 </div>
                 <div className="hidden md:flex space-x-4"> 
-                    
-                <UserButton showName />
+                <Collaborators/>
+                <UserButton />
                 </div>
             </nav>
         </header>
