@@ -15,7 +15,7 @@ const FormattingToolbar = () => {
   const [editor] = useLexicalComposerContext();
   const [isBold, setIsBold] = useState(false);
   // const [canUndo, setCanUndo] = useState(false);
-  // const [canRedo, setCanRedo] = useState(false);
+  const [canRedo, setCanRedo] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
 
   const $updateToolbar = useCallback(() => {
