@@ -1,19 +1,30 @@
-"use client"
+// app/page.tsx or app/home/page.tsx
+import AddDocumentBtn from "@/components/AddDocumentBtn";
+import { currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
-import { useRouter } from "next/navigation"; // Import useRouter from next/navigation
+export default async function Home() {
+  const user = await currentUser();
 
-export default function Home() {
-  const router = useRouter(); // Initialize the router
+  if (!user) redirect('/sign-in');
 
-  const handleClick = () => {
-    router.push("/dashboard"); // Redirect to the dashboard
-  };
-
+  // Pass necessary data to the client component
   return (
-    <> 
-      <button className="bg-slate-200" onClick={handleClick}>
-        Go to Editor
-      </button>
-    </>
+    <main>
+      <UserButton userId={user.id} email={user.emailAddresses[0].emailAddress} />
+    </main>
   );
 }
+interface UserButtonProps {
+  userId: string; 
+  email: string;  
+}
+// Create a client component for user button
+const UserButton = ({ userId, email }:UserButtonProps) => {
+  return (
+    <AddDocumentBtn 
+      userId={userId} 
+      email={email} 
+    />
+  );
+};

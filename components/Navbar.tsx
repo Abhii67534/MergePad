@@ -1,3 +1,4 @@
+
 import { UserButton } from '@clerk/nextjs';
 import React from 'react';
 import Collaborators from './Collaborators';
@@ -10,8 +11,11 @@ const Navbar = () => {
                     <img src="/logo.png" alt="MergePad Logo" className="h-10 mr-2" />
                     <span className="text-xl font-bold ml-3">MergePad</span>
                 </div>
-                <div className="hidden md:flex space-x-4"> 
+                <div className='flex w-full flex-1 justify-end gap-2 sm:gap-3'>
                 <Collaborators/>
+                </div>
+
+                <div className="hidden md:flex space-x-4"> 
                 <UserButton showName />
                 </div>
             </nav>
