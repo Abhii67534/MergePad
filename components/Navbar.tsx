@@ -12,7 +12,7 @@ const Navbar = () => {
                 </div>
                 <div className="hidden md:flex space-x-4"> 
                 <Collaborators/>
-                <UserButton />
+                <UserButton showName />
                 </div>
             </nav>
         </header>
