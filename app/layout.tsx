@@ -2,11 +2,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ClerkProvider, SignedOut, SignIn, useAuth, UserButton } from "@clerk/nextjs";
+import { ClerkProvider, SignedOut, SignIn } from "@clerk/nextjs";
 import { SignedIn } from "@clerk/nextjs";
 import { dark } from '@clerk/themes'
-import { useEffect } from "react";
-import { useRouter } from "next/router";
 import "@liveblocks/react-ui/styles.css";
 import "@liveblocks/react-lexical/styles.css";
 import "./globals.css";

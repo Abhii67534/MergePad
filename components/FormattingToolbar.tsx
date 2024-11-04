@@ -1,13 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { FORMAT_TEXT_COMMAND } from "lexical";
-import { HeadingNode, $createHeadingNode } from "@lexical/rich-text";
+import {  $createHeadingNode } from "@lexical/rich-text";
 import {
-  $getRoot,
   $getSelection,
   $isRangeSelection,
-  CAN_REDO_COMMAND,
-  CAN_UNDO_COMMAND,
+  CAN_REDO_COMMAND
 } from "lexical";
 import { $setBlocksType } from "@lexical/selection";
 import { mergeRegister } from "@lexical/utils";

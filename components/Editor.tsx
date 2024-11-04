@@ -10,7 +10,7 @@ import { HeadingNode } from '@lexical/rich-text';
 import { liveblocksConfig, LiveblocksPlugin } from "@liveblocks/react-lexical";
 import FormattingToolbar from './FormattingToolbar';
 
-interface Props {}
+
 
 const theme = {
   heading: {
@@ -28,7 +28,7 @@ function onError(error: Error) {
   console.error(error);
 }
 
-export function Editor({}: Props): JSX.Element {
+export function Editor(): JSX.Element {
   const initialConfig = liveblocksConfig({
     namespace: 'MyEditor',
     theme,
