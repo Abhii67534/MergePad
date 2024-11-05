@@ -11,8 +11,13 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        'dark-theme': "#1E1E1E",
-        'dark-theme-nav': "#141414"
+        'dark-theme': "#252541",
+        'dark-theme-nav': "#121221"
+      },
+      fontFamily: {
+        'pacifico': ['Pacifico', 'cursive'],
+        'anton': ['Anton SC', 'sans-serif'],
+        'poppins': ['Poppins', 'sans-serif'],
       },
     },
   },

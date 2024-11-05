@@ -16,7 +16,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="hidden md:flex space-x-4"> 
-                <UserButton showName />
+                <UserButton/>
                 </div>
             </nav>
         </header>

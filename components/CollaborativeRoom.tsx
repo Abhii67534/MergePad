@@ -11,9 +11,10 @@ interface CollaborativeRoomProps{
 const CollaborativeRoom = ({roomId}:CollaborativeRoomProps) => {
   return (
 <div className='bg-dark-theme min-h-screen'> 
-      <Navbar />
+      
       <main> 
         <Room roomId={roomId}>
+        <Navbar />
         <Editor />
         </Room>
       </main>

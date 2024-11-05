@@ -31,7 +31,7 @@ const AddDocumentBtn = ({ userId, email }: AddDocumentBtnProps) => {
   };
 
   return (
-    <button className='bg-slate-500 text-black' onClick={DocumentHandler}>
+    <button className='bg-blue-500 rounded-md h-[40px] w-[200px] font-semibold text-black' onClick={DocumentHandler}>
       Start a blank document
     </button>
   );
