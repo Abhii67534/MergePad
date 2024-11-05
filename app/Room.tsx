@@ -15,7 +15,7 @@ export function Room({roomId, children }: { children: ReactNode,roomId:string })
     <LiveblocksProvider 
     publicApiKey={"pk_dev_2pGKcq6c_xIYl468ajqd9hR93pgNIEXP1JHcomRnSKbfVoZ1t2Om5SMd-FyhpbbT"}
     resolveUsers={async({userIds})=>{
-      const response = axios.get('http://localhost:3000/api/get-users',{
+      const response = axios.get('merge-pad.vercel.app/api/get-users',{
         params:{
           userIds
         }

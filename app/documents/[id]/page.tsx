@@ -19,7 +19,7 @@ const Document = async ({ params }: DocumentProps) => {
   };
 
   try {
-    const response = await axios.get('http://localhost:3000/api/get-room', {
+    const response = await axios.get('https://merge-pad.vercel.app/api/get-room', {
       params: RoomData,
     });
 

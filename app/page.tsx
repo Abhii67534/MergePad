@@ -13,7 +13,7 @@ export default async function Home() {
   const email = user.emailAddresses[0].emailAddress;
 
   // Await the axios call to get the documents
-  const response = await axios.get("http://localhost:3000/api/get-documents", {
+  const response = await axios.get("https://merge-pad.vercel.app/api/get-documents", {
     params: {
       email: email,
     },

@@ -19,7 +19,7 @@ const AddDocumentBtn = ({ userId, email }: AddDocumentBtnProps) => {
     };
 
     try {
-      const response = await axios.post('http://localhost:3000/api/create-room', UserData);
+      const response = await axios.post('https://merge-pad.vercel.app/api/create-room', UserData);
 
       if (response.status === 200) {
         const { room } = response.data; // Assuming your API returns room data
