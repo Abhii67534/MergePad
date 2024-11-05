@@ -8,6 +8,7 @@ import {
   ClientSideSuspense,
 } from "@liveblocks/react/suspense";
 import axios from "axios";
+import Loader from "@/components/Loader";
 
 export function Room({roomId, children }: { children: ReactNode,roomId:string }) {
   return (
@@ -24,7 +25,7 @@ export function Room({roomId, children }: { children: ReactNode,roomId:string })
     }}
     >
       <RoomProvider id={roomId}>
-        <ClientSideSuspense fallback={<div>Loading…</div>}>
+        <ClientSideSuspense fallback={<Loader/>}>
           {children}
         </ClientSideSuspense>
       </RoomProvider>
