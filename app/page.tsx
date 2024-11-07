@@ -1,4 +1,5 @@
 import AddDocumentBtn from "@/components/AddDocumentBtn";
+import { UserButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import axios from "axios";
 import Image from "next/image";
@@ -19,8 +20,7 @@ export default async function Home() {
     },
   });
 
-  const documents = response.data.data; // Update this line to access the 'data' array
-
+  const documents = response.data.data; 
   return (
     <main className="p-4 bg-dark-theme-nav min-h-screen">
       <div className="flex justify-between items-center mb-20 ml-5 mr-5 mt-2">
@@ -28,11 +28,18 @@ export default async function Home() {
           Merge-Pad
         </h1>
 
-        <UserButton
+        <div className="flex justify-center gap-5">
+        <Userbutton
           userId={user.id}
           email={user.emailAddresses[0].emailAddress}
         />
+        <UserButton/>
+        </div>
+        
+        
       </div>
+
+      
 
       <h3 className="mt-20 flex justify-center text-3xl font-semibold text-white mb-4">
         List of All Documents
@@ -85,6 +92,6 @@ interface UserButtonProps {
 }
 
 // Create a client component for user button
-const UserButton = ({ userId, email }: UserButtonProps) => {
+const Userbutton = ({ userId, email }: UserButtonProps) => {
   return <AddDocumentBtn userId={userId} email={email} />;
 };
