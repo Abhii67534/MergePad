@@ -1,25 +1,34 @@
+import React, { useState } from "react";
+import Navbar from "./Navbar";
+import { Room } from "@/app/Room";
+import { Editor } from "./Editor";
 
-import React from 'react'
-import Navbar from './Navbar'
-import { Room } from '@/app/Room'
-import { Editor } from './Editor'
+type roomMetadata={
+  creatorId: string;
+  email: string;
+  title: string;
+};
 
-interface CollaborativeRoomProps{
-    roomId:string
+interface CollaborativeRoomProps {
+  roomId: string;
+  roomMetadata: {
+    creatorId: string;
+    email: string;
+    title: string;
+  };
 }
 
-const CollaborativeRoom = ({roomId}:CollaborativeRoomProps) => {
+const CollaborativeRoom = ({ roomId,roomMetadata }: CollaborativeRoomProps) => {
   return (
-<div className='bg-dark-theme min-h-screen'> 
-      
-      <main> 
+    <div className="bg-dark-theme min-h-screen">
+      <main>
         <Room roomId={roomId}>
-        <Navbar />
-        <Editor />
+        <Navbar roomId={roomId} roomMetadata={roomMetadata} />
+          <Editor />
         </Room>
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default CollaborativeRoom
+export default CollaborativeRoom;

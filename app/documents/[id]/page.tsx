@@ -27,10 +27,12 @@ const Document = async ({ params }: DocumentProps) => {
       redirect('/');
     }
 
-    const { room } = response.data; // Extract the room data as needed
+    console.log(response.data.metadata);
+    
+    
 
     return (
-      <CollaborativeRoom roomId={id} />
+      <CollaborativeRoom roomId={id} roomMetadata={response.data.metadata}/>
     );
   } catch (error) {
     console.error('Error fetching room data:', error);

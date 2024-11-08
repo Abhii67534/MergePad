@@ -19,7 +19,7 @@ export function Room({roomId, children }: { children: ReactNode,roomId:string })
         params:{
           userIds
         }
-      })
+      }) 
       const users= (await response).data;
       return users
     }}
