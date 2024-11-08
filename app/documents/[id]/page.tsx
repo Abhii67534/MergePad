@@ -26,7 +26,7 @@ const Document = async ({ params }: DocumentProps) => {
     if (response.status !== 200) {
       redirect('/');
     }
-
+    
     console.log(response.data.metadata);
     
     

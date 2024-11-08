@@ -35,7 +35,7 @@ const Navbar = ({ roomId, roomMetadata }: NavbarProps) => {
       try {
         if (documentTitle !== roomMetadata.title) {
           const title = documentTitle
-          const response = await axios.post("http://localhost:3000/api/update-document", {
+          const response = await axios.post("https://merge-pad.vercel.app/api/update-document", {
             roomId,        
             title, 
           });
