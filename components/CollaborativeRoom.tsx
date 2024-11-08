@@ -3,12 +3,14 @@ import Navbar from "./Navbar";
 import { Room } from "@/app/Room";
 import { Editor } from "./Editor";
 
-type roomMetadata={
-  creatorId: string;
+type User = {
+  id: string;
+  name: string;
   email: string;
-  title: string;
-};
-
+  avatar: string;
+  color: string;
+  userType?: "creator" | "editor" | "viewer";
+}
 interface CollaborativeRoomProps {
   roomId: string;
   roomMetadata: {
@@ -16,15 +18,17 @@ interface CollaborativeRoomProps {
     email: string;
     title: string;
   };
+  users: User[];
+  currentUserType: "creator" | "editor" | "viewer";
 }
 
-const CollaborativeRoom = ({ roomId,roomMetadata }: CollaborativeRoomProps) => {
+const CollaborativeRoom = ({ roomId,roomMetadata ,users,currentUserType}: CollaborativeRoomProps) => {
   return (
     <div className="bg-dark-theme min-h-screen">
       <main>
         <Room roomId={roomId}>
         <Navbar roomId={roomId} roomMetadata={roomMetadata} /> 
-          <Editor />
+          <Editor roomId= {roomId} currentUserType={currentUserType}/>
         </Room>
       </main>
     </div>

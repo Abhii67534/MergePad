@@ -10,7 +10,7 @@ import { HeadingNode } from '@lexical/rich-text';
 import { liveblocksConfig, LiveblocksPlugin } from "@liveblocks/react-lexical";
 import FormattingToolbar from './FormattingToolbar';
 
-
+type UserType = "creator" | "editor" | "viewer";
 
 const theme = {
   heading: {
@@ -28,12 +28,13 @@ function onError(error: Error) {
   console.error(error);
 }
 
-export function Editor(): JSX.Element {
+export function Editor({roomId, currentUserType}:{roomId:string , currentUserType:UserType}): JSX.Element {
   const initialConfig = liveblocksConfig({
     namespace: 'MyEditor',
     theme,
     nodes: [HeadingNode],
     onError,
+    editable:currentUserType==='editor'
   });
 
   return (
