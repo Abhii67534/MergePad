@@ -23,7 +23,7 @@ const CollaborativeRoom = ({ roomId,roomMetadata }: CollaborativeRoomProps) => {
     <div className="bg-dark-theme min-h-screen">
       <main>
         <Room roomId={roomId}>
-        <Navbar roomId={roomId} roomMetadata={roomMetadata} />
+        {/* <Navbar roomId={roomId} roomMetadata={roomMetadata} /> */}
           <Editor />
         </Room>
       </main>

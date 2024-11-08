@@ -11,7 +11,7 @@ export const GET = async (request: NextRequest) => {
   const email = searchParams.get("email");
 
   try {
-    const rooms = await liveblocks.getRooms({ userId: email as string });
+    const rooms = await liveblocks.getRooms();
     return NextResponse.json(rooms);
   } catch (error) {
     console.error("Error retrieving rooms:", error);
