@@ -10,24 +10,15 @@ const liveblocks = new Liveblocks({
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const roomId = searchParams.get('roomId');
-  const userId = searchParams.get('userId');
-
-  // Validate the presence of roomId and userId
-  if (!roomId || !userId) {
-    return NextResponse.json({ error: "Missing roomId or userId" }, { status: 400 });
+  
+  // Validate the presence of roomId
+  if (!roomId) {
+    return NextResponse.json({ error: "Missing roomId" }, { status: 400 });
   }
 
   try {
     // Fetch the room from Liveblocks
     const room = await liveblocks.getRoom(roomId);
-
-    // Check if the user has access to the room
-    const hasAccess = room.usersAccesses && Object.keys(room.usersAccesses).includes(userId);
-
-    // If no access, throw an error
-    if (!hasAccess) {
-      return NextResponse.json({ error: "No access to document" }, { status: 403 });
-    }
 
     // Return the room data if everything is valid
     return NextResponse.json(room);
