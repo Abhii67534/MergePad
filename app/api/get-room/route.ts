@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
     const room = await liveblocks.getRoom(roomId);
 
     // Return the room data if everything is valid
-    return NextResponse.json(room);
+    return NextResponse.json(room,{status:200});
 
   } catch (error) {
     // Log the error for debugging

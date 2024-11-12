@@ -10,6 +10,7 @@ import {
 } from "lexical";
 import { $setBlocksType } from "@lexical/selection";
 import { mergeRegister } from "@lexical/utils";
+import { OPEN_FLOATING_COMPOSER_COMMAND } from "@liveblocks/react-lexical";
 
 const FormattingToolbar = () => {
   const LowPriority = 1;
@@ -125,6 +126,14 @@ const FormattingToolbar = () => {
         onClick={handleH3}
       >
         H3
+      </button>
+
+      <button
+        onClick={() =>
+          editor.dispatchCommand(OPEN_FLOATING_COMPOSER_COMMAND, undefined)
+        }
+      >
+        💬 New comment
       </button>
     </div>
   );

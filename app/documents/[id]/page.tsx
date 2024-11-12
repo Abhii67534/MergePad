@@ -3,6 +3,7 @@ import CollaborativeRoom from "@/components/CollaborativeRoom";
 import axios from "axios";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import { log } from "console";
 
 interface DocumentProps {
   params: Promise<{ id: string }>; // Update this to expect a Promise
@@ -18,6 +19,10 @@ const Document = async ({ params }: DocumentProps) => {
   const { id } = await params; // Await the params Promise
   const user = await currentUser();
   const userId = user?.emailAddresses[0].emailAddress;
+  // console.log(userId);
+  // console.log(id);
+  
+  
 
   const RoomData = {
     roomId: id,
@@ -26,32 +31,31 @@ const Document = async ({ params }: DocumentProps) => {
 
   try {
     const response = await axios.get(
-      "https://merge-pad.vercel.app/api/get-room",
+      "http://localhost:3000/api/get-room",
       {
         params: RoomData,
       }
     );
 
-    if (response.status !== 200) {
-      redirect("/");
-    }
+    // console.log("User accesses ",response.data.usersAccesses);
 
-    console.log(response.data.metadata);
+    const userIds = Object.keys(response.data.usersAccesses);
 
-    const userIds = Object.keys(response.data.userAccesses);
+    // console.log("userids",userIds);
+    
 
-    const users = await axios.get("https://merge-pad.vercel.app/api/get-room", {
-      params: {
-        userIds: userIds.join(","),
-      },
+    const users = await axios.get("http://localhost:3000/api/get-users", {
+      params: { userIds: userIds.join(",") }, 
     });
-
+    
+    // console.log("FAILING HERE ", users.data );
     const userData = users.data.map((user:User)=>({
-      ...user,
-      usertype:response.data.userAccesses[response.data.email]?.includes('room:write')
+      ...user, 
+      usertype:response.data.usersAccesses[user.email]?.includes('room:write')
       ?'editor'
       :'viewer'
     }))
+// console.log("reached here");
 
     const currentUserType = user && user.emailAddresses[0]?.emailAddress
   ? response.data.usersAccesses[user.emailAddresses[0].emailAddress]?.includes('room:write')
@@ -68,7 +72,7 @@ const Document = async ({ params }: DocumentProps) => {
     );
   } catch (error) {
     console.error("Error fetching room data:", error);
-    redirect("/"); // Redirect in case of an error
+    redirect("/"); 
   }
 };
 

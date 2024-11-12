@@ -7,8 +7,9 @@ import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
 import { HeadingNode } from '@lexical/rich-text';
-import { liveblocksConfig, LiveblocksPlugin } from "@liveblocks/react-lexical";
+import { FloatingComposer, FloatingThreads, liveblocksConfig, LiveblocksPlugin } from "@liveblocks/react-lexical";
 import FormattingToolbar from './FormattingToolbar';
+import { useThreads } from '@liveblocks/react/suspense';
 
 type UserType = "creator" | "editor" | "viewer";
 
@@ -37,6 +38,7 @@ export function Editor({roomId, currentUserType}:{roomId:string , currentUserTyp
     editable:currentUserType==='editor'
   });
 
+  const {threads} = useThreads();
   return (
     <LexicalComposer initialConfig={initialConfig}>
       <FormattingToolbar />
@@ -47,7 +49,10 @@ export function Editor({roomId, currentUserType}:{roomId:string , currentUserTyp
       />
       <HistoryPlugin />
       <AutoFocusPlugin />
-      <LiveblocksPlugin />
+      <LiveblocksPlugin >
+      <FloatingComposer style={{ width: "350px" }} />
+      <FloatingThreads threads={threads} />
+      </LiveblocksPlugin>
     </LexicalComposer>
   );
 }
