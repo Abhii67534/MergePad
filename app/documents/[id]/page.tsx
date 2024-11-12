@@ -31,7 +31,7 @@ const Document = async ({ params }: DocumentProps) => {
 
   try {
     const response = await axios.get(
-      "http://localhost:3000/api/get-room",
+      "https://merge-pad.vercel.app/api/get-room",
       {
         params: RoomData,
       }
@@ -44,7 +44,7 @@ const Document = async ({ params }: DocumentProps) => {
     // console.log("userids",userIds);
     
 
-    const users = await axios.get("http://localhost:3000/api/get-users", {
+    const users = await axios.get("https://merge-pad.vercel.app/api/get-users", {
       params: { userIds: userIds.join(",") }, 
     });
     
