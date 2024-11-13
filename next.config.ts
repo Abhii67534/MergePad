@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     // Ignore ESLint errors during production builds
     ignoreDuringBuilds: true,
   },
+  images:{
+    remotePatterns:[{protocol:'https',hostname:'img.clerk.com'}]
+  }
 };
 
 export default nextConfig;

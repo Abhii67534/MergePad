@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
 import { LexicalComposer } from '@lexical/react/LexicalComposer';
@@ -29,29 +29,36 @@ function onError(error: Error) {
   console.error(error);
 }
 
-export function Editor({roomId, currentUserType}:{roomId:string , currentUserType:UserType}): JSX.Element {
+export function Editor({ roomId, currentUserType }: { roomId: string, currentUserType: UserType }): JSX.Element {
   const initialConfig = liveblocksConfig({
     namespace: 'MyEditor',
     theme,
     nodes: [HeadingNode],
     onError,
-    editable:currentUserType==='editor'
+    editable: currentUserType === 'editor',
   });
 
-  const {threads} = useThreads();
+  const { threads } = useThreads();
+
   return (
     <LexicalComposer initialConfig={initialConfig}>
       <FormattingToolbar />
-      <RichTextPlugin
-        contentEditable={<ContentEditable className="h-screen p-3 text-white" />}
-        placeholder={<div className="text-white absolute top-[145px] left-5">Enter some text...</div>}
-        ErrorBoundary={LexicalErrorBoundary}
-      />
+      <div className="relative">
+        <RichTextPlugin
+          contentEditable={<ContentEditable className="h-[70vh] sm:h-[80vh] md:h-[90vh] w-full p-3 text-white" />}
+          placeholder={<div className="text-white absolute left-2 top-3 text-xs sm:text-sm md:text-base px-3 py-1 pointer-events-none">
+            Enter some text...
+          </div>}
+          ErrorBoundary={LexicalErrorBoundary}
+        />
+      </div>
       <HistoryPlugin />
       <AutoFocusPlugin />
-      <LiveblocksPlugin >
-      <FloatingComposer style={{ width: "350px" }} />
-      <FloatingThreads threads={threads} />
+      <LiveblocksPlugin>
+        <div className="sm:w-80 md:w-96 w-full mx-auto">
+          <FloatingComposer style={{ width: "100%" }} />
+        </div>
+        <FloatingThreads threads={threads} />
       </LiveblocksPlugin>
     </LexicalComposer>
   );

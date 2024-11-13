@@ -15,12 +15,15 @@ const Collaborators = () => {
     const others = useOthers(); 
     console.log(others);
     
+    
+    
     const collaborators: Collaborator[] = others.map((p) => p.info|| {}); // Accessing collaborator info
-
+    
     return (
-        <ul className='collaborators-list'>
+        <ul className='collaborators-list flex'>
             {collaborators.map(({ id, name, avatar, color = 'green' }) => ( // Fallback color
                 <li key={id || Math.random().toString(36)}>
+                    
                     <Image 
                         src={avatar || '/default-avatar.png'} // Fallback image if avatar is undefined
                         alt={name || 'Unknown'} // Fallback alt text
