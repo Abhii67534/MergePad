@@ -44,7 +44,7 @@ export function Editor({roomId, currentUserType}:{roomId:string , currentUserTyp
       <FormattingToolbar />
       <RichTextPlugin
         contentEditable={<ContentEditable className="h-screen p-3 text-white" />}
-        placeholder={<div className="text-white absolute top-[125px] left-5">Enter some text...</div>}
+        placeholder={<div className="text-white absolute top-[145px] left-5">Enter some text...</div>}
         ErrorBoundary={LexicalErrorBoundary}
       />
       <HistoryPlugin />

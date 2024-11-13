@@ -5,6 +5,7 @@ import Collaborators from "./Collaborators";
 import { Input } from "./ui/input";
 import Image from "next/image";
 import axios from "axios";
+import Link from "next/link";
 
 type RoomMetadata = {
   creatorId: string;
@@ -78,15 +79,15 @@ const Navbar = ({ roomId, roomMetadata }: NavbarProps) => {
 
   return (
     <header className="bg-dark-theme-nav text-white">
-      <nav className="flex items-center justify-between p-4">
+      <nav className="flex items-center justify-between px-5 py-2">
         {/* Left side: MergePad logo */}
-        <div className="flex items-center">
-          <img src="/logo.png" alt="MergePad Logo" className="h-10 mr-2" />
-          <span className="text-xl font-bold ml-3">MergePad</span>
+        <div className="flex items-center gap-2">
+          <img src="/logo.png" alt="MergePad Logo" className="h-[70px] mr-2" />
+          <Link href='/' className="text-3xl font-bold"> Merge-Pad</Link>
         </div>
 
-        {/* Center: Document title or Input (when editing) */}
-        <div className="flex-1 flex justify-center">
+      
+        <div className=" flex items-center justify-center">
           {editing ? (
             <Input
               ref={inputRef}
@@ -98,16 +99,14 @@ const Navbar = ({ roomId, roomMetadata }: NavbarProps) => {
               className="text-center bg-transparent border-b-2 border-white focus:outline-none focus:ring-0 max-w-[400px] w-full"
             />
           ) : (
-            <div className="text-center font-bold">{documentTitle}</div>
+            <div className="text-center font-bold text-xl">{documentTitle}</div>
           )}
-
-          {/* Edit button and loading state */}
           {currentUserType === "editor" && !editing && (
             <Image
               src="/edit.png"
               alt="edit"
-              width={24}
-              height={24}
+              width={22}
+              height={2}
               className="cursor-pointer ml-2"
               onClick={() => setEditing(true)}
             />

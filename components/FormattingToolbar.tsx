@@ -11,6 +11,7 @@ import {
 import { $setBlocksType } from "@lexical/selection";
 import { mergeRegister } from "@lexical/utils";
 import { OPEN_FLOATING_COMPOSER_COMMAND } from "@liveblocks/react-lexical";
+import Image from "next/image";
 
 const FormattingToolbar = () => {
   const LowPriority = 1;
@@ -81,7 +82,7 @@ const FormattingToolbar = () => {
   };
 
   return (
-    <div className="bg-dark-theme-nav flex items-center pl-2 space-x-2">
+    <div className="bg-gradient-to-r from-[#0b1320] to-[#1b263b border-blue-700 flex items-center pl-2 space-x-2">
       <button className=" flex items-center" onClick={handleH3}>
         <img className="h-[18px] mb-[5px] mr-2" src="/undo.png" alt="undo" />
       </button>
@@ -129,11 +130,12 @@ const FormattingToolbar = () => {
       </button>
 
       <button
+      className="flex items-center"
         onClick={() =>
           editor.dispatchCommand(OPEN_FLOATING_COMPOSER_COMMAND, undefined)
         }
       >
-        💬 New comment
+        <img className="h-[18px] mb-[5px] mr-2" src="/comment.png" alt="undo" />
       </button>
     </div>
   );

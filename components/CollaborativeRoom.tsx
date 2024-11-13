@@ -24,7 +24,7 @@ interface CollaborativeRoomProps {
 
 const CollaborativeRoom = ({ roomId,roomMetadata ,users,currentUserType}: CollaborativeRoomProps) => {
   return (
-    <div className="bg-dark-theme min-h-screen">
+    <div className="bg-dark-blue-gradient min-h-screen text-white flex flex-col">
       <main>
         <Room roomId={roomId}>
         <Navbar roomId={roomId} roomMetadata={roomMetadata} /> 
