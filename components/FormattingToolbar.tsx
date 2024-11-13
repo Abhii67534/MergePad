@@ -17,6 +17,7 @@ const FormattingToolbar = () => {
   const LowPriority = 1;
   const [editor] = useLexicalComposerContext();
   const [isBold, setIsBold] = useState(false);
+  const [isUnderline, setIsUnderline] = useState(false);
   const [canUndo, setCanUndo] = useState(false);
   const [canRedo, setCanRedo] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
@@ -27,10 +28,12 @@ const FormattingToolbar = () => {
       // Check for bold and italic formatting in the current selection
       const isBold = selection.hasFormat("bold");
       const isItalic = selection.hasFormat("italic");
+      const isUnderline = selection.hasFormat("underline");
   
       // Update the toolbar states accordingly
       setIsBold(isBold);
       setIsItalic(isItalic);
+      setIsUnderline(isUnderline);
     }
   }, []);
 
@@ -57,6 +60,10 @@ const FormattingToolbar = () => {
   };
   const handleItalic = () => {
     editor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic");
+  };
+
+  const handleUnderline = () => {
+    editor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline");
   };
 
   const handleH1 = () => {
@@ -95,6 +102,7 @@ const FormattingToolbar = () => {
        }}>
         <img className="h-[18px] mb-[5px] mr-2" src="/undo.png" alt="undo" />
       </button>
+
       <button 
       className=" flex items-center" 
       onClick={()=>{
@@ -121,7 +129,7 @@ const FormattingToolbar = () => {
         I
       </button>
 
-      <button className=" flex items-center " onClick={handleH3}>
+      <button className=" flex items-center " onClick={handleUnderline}>
         <img className="h-[15px] mb-[5px] mr-2" src="/underline.png" alt="undo"/>
       </button>
 

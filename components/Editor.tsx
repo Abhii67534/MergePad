@@ -22,6 +22,7 @@ const theme = {
   text: {
     bold: "bold",
     italic: "italic",
+    underline:"underline"
   },
 };
 
