@@ -127,7 +127,7 @@ const Navbar = ({ roomId, roomMetadata }: NavbarProps) => {
           <Collaborators />
           <UserButton />
         </div>
-        <button onClick={handle} >Click</button>
+        {/* <button onClick={handle} >Click</button> */}
       </nav>
     </header>
   );
